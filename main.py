@@ -88,7 +88,11 @@ if escapia_file and breezeway_file:
                 date = row['Start_Date']
             
             if row['Unit_Code'] != unit:
-                st.header(f'🏡 {row['Unit_Code']} - {row['Address']} - {row['ReservationTypeDescription']} - {row['Start_Date'].strftime('%m/%d')}')
+                if row['ReservationTypeDescription'].str.contains('Renter'):
+                    st.header(f'🏠 {row['Unit_Code']} - {row['Address']} - {row['ReservationTypeDescription']} - {row['Start_Date'].strftime('%m/%d')}')
+                else:
+                    st.header(f'🏡 {row['Unit_Code']} - {row['Address']} - {row['ReservationTypeDescription']} - {row['Start_Date'].strftime('%m/%d')}')
+
                 st.write(f'')
                 unit = row['Unit_Code']
 
