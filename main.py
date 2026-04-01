@@ -84,11 +84,11 @@ if escapia_file and breezeway_file:
 
         for _, row in df.iterrows():
             if row['Start_Date'] != date:
-                st.title(f'🗓️ {row['Start_Date'].strftime("%A, %B %d, %Y")}')
+                st.title(f'🗓️ {row['Start_Date'].strftime('%A, %B %d, %Y')}')
                 date = row['Start_Date']
             
             if row['Unit_Code'] != unit:
-                if row['ReservationTypeDescription'].str.contains('Renter'):
+                if 'Renter' in row['ReservationTypeDescription']:
                     st.header(f'🏠 {row['Unit_Code']} - {row['Address']} - {row['ReservationTypeDescription']} - {row['Start_Date'].strftime('%m/%d')}')
                 else:
                     st.header(f'🏡 {row['Unit_Code']} - {row['Address']} - {row['ReservationTypeDescription']} - {row['Start_Date'].strftime('%m/%d')}')
