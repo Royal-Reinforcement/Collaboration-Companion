@@ -90,8 +90,10 @@ if escapia_file and breezeway_file:
             if row['Unit_Code'] != unit:
                 if 'Renter' in row['ReservationTypeDescription']:
                     st.header(f'🏠 {row['Unit_Code']} - {row['Address']} - {row['ReservationTypeDescription']} - {row['Start_Date'].strftime('%m/%d')}')
-                else:
+                elif 'Guest of Owner' in row['ReservationTypeDescription']:
                     st.header(f'🏡 {row['Unit_Code']} - {row['Address']} - {row['ReservationTypeDescription']} - {row['Start_Date'].strftime('%m/%d')}')
+                else:
+                    st.header(f'🏰 {row['Unit_Code']} - {row['Address']} - {row['ReservationTypeDescription']} - {row['Start_Date'].strftime('%m/%d')}')
 
                 st.write(f'')
                 unit = row['Unit_Code']
