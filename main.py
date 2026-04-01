@@ -32,7 +32,7 @@ st.info('Highlight collaboration opportunities based on property arrivals.')
 
 auth = st.query_params.get('auth')
 
-if auth == st.secrets['auth']:
+if auth == st.secrets['auth']['key']:
     current_year = datetime.now().year
     prior_year   = current_year - 1
     next_year    = current_year + 1
