@@ -47,7 +47,7 @@ start_date      = c1.date_input('Date range start', value=datetime.now())
 end_date        = c2.date_input('Date range end', value=datetime.now())
 
 escapia_file    = c1.file_uploader(label='Housekeeping Arrival Departure Report - Excel 1 line.csv', type='csv')
-breezeway_file  = c2.file_uploader(label='breezeway-task-custom-export.csv', type='csv')
+breezeway_file  = c2.file_uploader(label='breezeway-task-custom-export.csv | Tasks > All Tasks > All tasks (collab ops reporting)', type='csv')
 
 
 if escapia_file and breezeway_file:
