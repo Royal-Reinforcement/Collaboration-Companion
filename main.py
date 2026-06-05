@@ -61,7 +61,7 @@ end_date        = c2.date_input('Date range end', value=datetime.now())
 c1, c2, c3      = st.columns(3)
 
 escapia_file    = c1.file_uploader(label='**Housekeeping Arrival Departure Report - Excel 1 line.csv**\n\n Download button above', type='csv')
-breezeway_file  = c2.file_uploader(label='**breezeway-task-custom-export.csv**\n\nBreezeway > Tasks > All Tasks > All tasks (collab ops reporting)', type='csv')
+breezeway_file  = c2.file_uploader(label='**breezeway-task-custom-export.csv**\n\nBreezeway > Tasks > All Tasks > All tasks (collab ops reporting) > Custom Report', type='csv')
 pod_file        = c3.file_uploader(label='**Amenity String Report.csv**\n\nEscapia > Units > Reports > Amenity String Report > (Select all) > CSV', type='csv')
 
 
@@ -145,6 +145,10 @@ if escapia_file and breezeway_file and pod_file:
     st.success('Opportunities are sorted by **arrival date**, then by **geographical order**.', icon='🥇')
     st.info('Only tasks with due dates **on or before** each property\'s **arrival date** are included.', icon='🗓️')
 
+    df = df.dropna(subset=['Pod'])
+    
     st.selectbox('Filter by POD', options=['All'] + sorted(df['Pod'].unique()), key='pod_filter')
+
+
     with st.expander('Opportunities', expanded=False):
         print_results(df, pod_filter=st.session_state.get('pod_filter'))
